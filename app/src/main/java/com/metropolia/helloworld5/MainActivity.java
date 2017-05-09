@@ -1,5 +1,7 @@
 package com.metropolia.helloworld5;
 
+import android.content.Intent;
+import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
+    private double number = Double.NaN;
+    private double resultNum = Double.NaN;
+    DecimalFormat decimalFormat = new DecimalFormat("#.#######");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText typenum = (EditText) findViewById(R.id.number);
         final TextView result = (TextView) findViewById(R.id.result);
-
-        final double number = 0;
 
         final Button button0 = (Button) findViewById(R.id.button0);
         final Button button1 = (Button) findViewById(R.id.button1);
@@ -31,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         final Button button9 = (Button) findViewById(R.id.button9);
         final Button buttonD = (Button) findViewById(R.id.buttonD);
         final Button buttonC = (Button) findViewById(R.id.buttonC);
+        final Button convert = (Button) findViewById(R.id.convert_button);
+
+        Intent intent = getIntent();
+        final double exRate = intent.getDoubleExtra(RateActivity.EXTRA_MESSAGE, 1);
+        final String currencyUnit = intent.getStringExtra(RateActivity.EXTRA_MESSAGE2);
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,10 +48,82 @@ public class MainActivity extends AppCompatActivity {
                 typenum.setText(typenum.getText() + "0");
             }
         });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "1");
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "2");
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "3");
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "4");
+            }
+        });
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "5");
+            }
+        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "6");
+            }
+        });
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "7");
+            }
+        });
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "8");
+            }
+        });
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + "9");
+            }
+        });
+        buttonD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                typenum.setText(typenum.getText() + ".");
+            }
+        });
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                number = Double.NaN;
                 typenum.setText("");
+            }
+        });
+        convert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("rate: "+ exRate);
+                number = Double.parseDouble(typenum.getText().toString());
+                System.out.println("num: "+number);
+                resultNum = number*exRate;
+                System.out.println("res: "+ resultNum);
+                result.setText("Result: "+resultNum+" "+currencyUnit);
             }
         });
     }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.metropolia.helloworld5.RateActivity">
+
+    <RadioButton
+        android:id="@+id/usd_convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="US Dollar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="onRadioButtonClicked"  />
+
+    <RadioButton
+        android:id="@+id/yen_convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Japanese Yen"
+        tools:layout_editor_absoluteX="248dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="onRadioButtonClicked"  />
+
+    <Button
+        android:id="@+id/convert_call_button"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:onClick="sendMessage"
+        android:text="CONVERT"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="230dp" />
+</RadioGroup>
